@@ -39,6 +39,7 @@ console.log(this)
         position: {type: '2f', value:{x:50, y:100}},
         iResolution : {type: '2f', value:{x:window.innerWidth, y:window.innerHeight}},
         iMouse : {type: '2f', value:{x:window.innerWidth/2, y:window.innerHeight/2}},
+        iGlobalTime: {type: '1f', value:0.4},
         //dimensions : {type: '4f', value:[]},
     };
 
@@ -69,7 +70,7 @@ console.log(this)
         '}'
     ];*/
 
-    this.fragmentSrc = [
+    //this.fragmentSrc = [
       /*'precision mediump float;',
       'uniform sampler2D tex0;',
       
@@ -97,7 +98,7 @@ console.log(this)
         '}',
         'gl_FragColor = vec4(col, 1.0);',
       '}'*/
-      'precision mediump float;',
+      /*'precision mediump float;',
       'uniform vec2      iResolution;           // viewport resolution (in pixels)',
 'uniform vec2      iMouse;                // mouse pixel coords. xy: current (if MLB down), zw: click',
 'uniform sampler2D iChannel0;          // input channel. XX = 2D/Cube',
@@ -152,7 +153,9 @@ console.log(this)
 '  gl_FragColor = texture2D(iChannel0, uv_lense_distorted);',
 '',
 '}',
-    ];
+    ];*/
+
+     this.fragmentSrc = shader;
 };
 
 PIXI.EyeFishFilter.prototype = Object.create( PIXI.AbstractFilter.prototype );
@@ -193,6 +196,17 @@ Object.defineProperty(PIXI.EyeFishFilter.prototype, 'iMouse', {
         this.uniforms.position.value = value;
     }
 });
+Object.defineProperty(PIXI.EyeFishFilter.prototype, 'iGlobalTime', {
+    get: function() {
+        return this.uniforms.position.value;
+    },
+    set: function(value) {
+        this.dirty = true;
+        this.uniforms.position.value = value;
+    }
+});
+
+
 
 var Wormhole = function(canvas) {
 
@@ -255,7 +269,9 @@ var Wormhole = function(canvas) {
     
     this.wormhole.mask = mask;
 
-    //this.wormhole.filters = [new PIXI.EyeFishFilter()];
+    this.wormhole.filters = [new PIXI.EyeFishFilter()];
+    this.wormhole.filters[0].uniforms.iGlobalTime = 0;
+    
     this.stage.addChild(this.wormhole);
 
     /*var wormholeTexture = PIXI.Texture.fromImage("./galaxy-sphere-texture.png");
@@ -278,9 +294,11 @@ var Wormhole = function(canvas) {
 
   var _render = function() {
     
-    this.sprite.tilePosition.x += 1;
-    this.sprite.rotation += 0.01;
+    //this.sprite.tilePosition.x += 1;
+    //this.sprite.rotation += 0.01;
     //this.sprite.anchor.x += 0.01;
+    //this.wormhole.filters[0].uniforms.iGlobalTime += 16;
+    //this.sprite.filters[0].dirty = true;
 
     this.space.tilePosition.x -= 0.1;
     this.space.rotation += 0.0001;
