@@ -60,6 +60,15 @@
 
         var geometry = new THREE.SphereGeometry( 400, 32, 32 );
 
+       /* var geometry = new THREE.LatheGeometry( [
+          new THREE.Vector3(0,0,0),
+          new THREE.Vector3(0,50,50),
+          new THREE.Vector3(0,10,100),
+          new THREE.Vector3(0,50,150),
+          new THREE.Vector3(0,0,200) ] 
+        );*/
+
+   
         var path = "img/";
         var format = '.jpg';
         var urls = [
@@ -69,7 +78,7 @@
         ];
 
         var textureCube = THREE.ImageUtils.loadTextureCube( urls, new THREE.CubeRefractionMapping() );
-        var material = new THREE.MeshBasicMaterial( { color: 0xffffff, envMap: textureCube, refractionRatio: 0.95, reflectivity:1 } );
+        var material = new THREE.MeshBasicMaterial( { color: 0xffffff, envMap: textureCube, refractionRatio: 0.75, reflectivity:1 } );
 
         /*var shader = THREE.FresnelShader;
         var uniforms = THREE.UniformsUtils.clone( shader.uniforms );
@@ -86,7 +95,7 @@
           //mesh.position.y = Math.random() * 10000 - 5000;
           //mesh.position.z = Math.random() * 10000 - 5000;
 
-          mesh.scale.x = mesh.scale.y = mesh.scale.z = Math.random() * 3 + 1;
+          mesh.scale.x = mesh.scale.y = mesh.scale.z = 1 * 3 + 1;
 
           scene.add( mesh );
 
