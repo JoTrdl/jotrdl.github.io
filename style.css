@@ -1,48 +1,76 @@
 
+
+@font-face {
+  font-family: 'Nexa Light';
+  src: url('assets/fonts/nexa-light.eot');
+  src: local('☺'), url('assets/fonts/nexa-light.woff') format('woff'), url('assets/fonts/nexa-light.ttf') format('truetype'), url('assets/fonts/nexa-light.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
 html, body {
   margin: 0;
   padding: 0;
   width: 100%;
-  height:100%;
+  height: 100%;
   position: relative;
+}
+
+
+@-webkit-keyframes background {
+  0%{background-position:0% 2%}
+  50%{background-position:100% 99%}
+  100%{background-position:0% 2%}
+}
+@-moz-keyframes background {
+  0%{background-position:0% 2%}
+  50%{background-position:100% 99%}
+  100%{background-position:0% 2%}
+}
+@keyframes background { 
+  0%{background-position:0% 2%}
+  50%{background-position:100% 99%}
+  100%{background-position:0% 2%}
 }
 
 body {
-  background: url(./img/bg.jpg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
 
   color: #fff;
+
+  background-color: #0b8793;
+  background: linear-gradient(350deg, #360033, #0b8793);
+  background-size: 200% 200%;
+
+  -webkit-animation: background 22s ease infinite;
+  -moz-animation: background 22s ease infinite;
+  animation: background 22s ease infinite;
 }
 
-/* 
-scrollbar
-https://github.com/pixelass/customScrollBar/blob/master/css/lionbars.css
-*/
-
-
-/* https://gist.github.com/pburtchaell/e702f441ba9b3f76f587 */
-.pageblock {
-  position: relative;
+.wrapper {
   display: block;
-  height: 100vh;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  text-align: center;
 }
 
-.pageblock .wrapper {
-  display: block;
-  position: relative;
-  width: 95%;
-  height: 90%;
-  margin: 0 auto;
-  padding-top: 2.5%;
+h1.title {
+  font-family: 'Nexa Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 64px;
+  letter-spacing: 4px;
+  line-height: 1.3em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  margin-top: 75px;
+  opacity: .85;
 }
 
 nav {
   display: inline-block;
-  margin-top: 15px;
-  float: right;
+  position: absolute;
+  right: 15px;
+  top: 30px;
 }
 nav a {
   opacity: .75;
@@ -68,11 +96,65 @@ nav a:hover {
 }
 
 nav a.github {
-  background: transparent url(./img/github.svg) center no-repeat;
+  background: transparent url(assets/img/github.svg) center no-repeat;
 }
 nav a.linkedin {
-  background: transparent url(./img/linkedin.svg) center no-repeat;
+  background: transparent url(assets/img/linkedin.svg) center no-repeat;
 }
-nav a.mail {
-  background: transparent url(./img/mail.svg) center no-repeat;
+
+#tags {
+  margin: 0 auto;
+  margin-top: -5%;
+  width: 90%;
+  height: 70%;
 }
+
+
+/* layout */
+div.jqcloud {
+  overflow: hidden;
+  position: relative;
+}
+
+div.jqcloud span {
+  padding: 0;
+}
+/* fonts */
+div.jqcloud {
+  font-family: 'Nexa Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  line-height: 2em;
+  text-transform: uppercase;
+}
+
+div.jqcloud a {
+  font-size: inherit;
+  text-decoration: none;
+}
+
+div.jqcloud span.w10 { font-size: 550%; }
+div.jqcloud span.w9 { font-size: 500%; }
+div.jqcloud span.w8 { font-size: 450%; }
+div.jqcloud span.w7 { font-size: 400%; }
+div.jqcloud span.w6 { font-size: 350%; }
+div.jqcloud span.w5 { font-size: 300%; }
+div.jqcloud span.w4 { font-size: 250%; }
+div.jqcloud span.w3 { font-size: 200%; }
+div.jqcloud span.w2 { font-size: 150%; }
+div.jqcloud span.w1 { font-size: 100%; }
+
+/* colors */
+div.jqcloud { color: #09f; }
+div.jqcloud a { color: inherit; }
+div.jqcloud a:hover { color: #0df; }
+div.jqcloud a:hover { color: #0cf; }
+div.jqcloud span.w10 { color: #0cf; }
+div.jqcloud span.w9 { color: #0cf; }
+div.jqcloud span.w8 { color: #0cf; }
+div.jqcloud span.w7 { color: #39d; }
+div.jqcloud span.w6 { color: #90c5f0; }
+div.jqcloud span.w5 { color: #90a0dd; }
+div.jqcloud span.w4 { color: #90c5f0; }
+div.jqcloud span.w3 { color: #a0ddff; }
+div.jqcloud span.w2 { color: #99ccee; }
+div.jqcloud span.w1 { color: #aab5f0; }

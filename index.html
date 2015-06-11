@@ -17,19 +17,60 @@
   <meta name="author" content="JoTrdl"/>
   <meta name="description" content="JoTrdl's portfolio, work &amp; experiments"/>
   <meta name="keywords" content="JoTrdl, web, javascript, experiments"/>
+
   <link rel="stylesheet" href="style.css">
+
+  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="script.min.js"></script>
 </head>
 
 <body>
-  <header class="pageblock">
-    <div class="wrapper">
-      <nav class="">
-        <a class="linkedin" href="https://www.linkedin.com/pub/johann-troendle/14/a3a/766" target="_blank"></a>
-        <a class="github" href="https://github.com/JoTrdl" target="_blank"></a>
-        <a class="mail" href="mailto" target="_blank"></a>
-      </nav>
-    </div>
-  </header>
+  <div class="wrapper">
+    <h1 class="title">Jo / Trdl</h1>
+    <nav>
+      <a class="linkedin" href="https://www.linkedin.com/pub/johann-troendle/14/a3a/766" target="_blank"></a>
+      <a class="github" href="https://github.com/JoTrdl" target="_blank"></a>
+    </nav>
+
+    <div id="tags"></div>
+  </div>
 </body>
 
+<script>
+var words = [
+  {text: "javascript", weight: 10.5},
+  {text: "html 5", weight: 10.1},
+  {text: "css 3", weight: 9.9},
+  
+  {text: "iOS", weight: 7},
+  {text: "node.js", weight: 7},
+  
+  {text: "Design", weight: 6},
+  {text: "Tech", weight: 6},
+
+  {text: "Gulp", weight: 5},
+  {text: "Grunt", weight: 5},
+  {text: "Git", weight: 5},
+
+  {text: "Backbone.js", weight: 4},
+  {text: "jQuery", weight: 4},
+  {text: "WebGL", weight: 4},
+  {text: "Real Time", weight: 4},
+
+  {text: "MongoDB", weight: 3},
+  {text: "MySQL", weight: 3},
+  {text: "REST API", weight: 3},
+  
+  {text: "Architecture", weight: 2},
+  {text: "Mobile", weight: 2},
+  {text: "Animation", weight: 2},
+  
+  {text: "responsive", weight: 1},
+  {text: "interface", weight: 1}
+];
+
+$('#tags').jQCloud(words, {
+  autoResize: true
+});
+</script>
 </html>
