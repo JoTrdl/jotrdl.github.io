@@ -152,8 +152,6 @@
     for (var i = 0; i < this.effects.length; i++) {
       this.effects[i].resize(this.context);
     }
-
-    this.monitor.reset();
     
     return this;
   };
