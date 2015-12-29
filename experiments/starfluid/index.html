@@ -8,7 +8,15 @@
   <meta name="author" content="Johann Troendle">
 
   <style>
-    html, body { margin: 0; padding: 0; background-color: #000; }
+    html, body {
+      margin: 0; padding: 0; background-color: #000;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
     canvas { position: absolute; top: 0; left: 0; z-index: 0; }
     #screenshot { position: absolute; width: 100%; height: 100%; z-index: 1; display: none; }
     #ce { position: absolute; z-index: 3; bottom: 10px; right: 10px }
@@ -56,7 +64,7 @@
     }
 
   </style>
-  
+
   <script src="js/lib/rtt.gl.js"></script>
   <script src="js/lib/stage.gl.js"></script>
   <script src="js/lib/loader.gl.js"></script>
@@ -76,6 +84,8 @@
     </div>
   </div>
 
+  <a id="ce" href="https://www.chromeexperiments.com/experiment/starfluid/"><img src="./img/ce.png" alt="See my Experiment on ChromeExperiments.com" /></a>
+
 </body>
 
 <extern src="shaders/motion.html"></extern>
@@ -84,7 +94,7 @@
 <extern src="shaders/visualizer.html"></extern>
 
 <script>
-  
+
   (function() {
     var canvas = document.getElementById('canvas');
 
@@ -110,13 +120,13 @@
       document.getElementById('screenshot').style.display = 'block';
 
       // defering alert to allow a repaint for displaying images
-      setTimeout(function() { 
+      setTimeout(function() {
         alert('Sorry, experiment is not supported on your browser.')
       }, 0);
 
       return;
     }
-    
+
     gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
     gl.clearColor(0.0, 0.0, 0.0, 1.0);
 
