@@ -4,9 +4,9 @@
   var CELLS = 256;
 
   Stage.Motion = Stage.Effect.extend({
-    
+
     name: 'motion',
-    
+
     initialize: function(ctx) {
       this.ctx = ctx;
 
@@ -36,14 +36,14 @@
       }, false);
       canvas.addEventListener('mousemove', this.mousemove.bind(this), false);
     },
-    
+
     update: function(ctx) {
       this.ctx = ctx;
       this.motion.render();
       this.uniforms.velocity.value = [0, 0];
       this.uniforms.dye.value = 0;
     },
-    
+
     resize: function(ctx) {
       this.ctx = ctx;
       this.uniforms.ratio.value = ctx.aspect;
@@ -57,8 +57,8 @@
       this.oldMouseX = this.oldMouseX || 0;
       this.oldMouseY = this.oldMouseY || 0;
 
-      var mouseX = e.offsetX,
-        mouseY = e.offsetY;
+      var mouseX = e.clientX,
+        mouseY = e.clientY;
 
       // Find the cell below the mouse
       var i = ((mouseX / this.ctx.width) * CELLS) | 0,
@@ -67,11 +67,11 @@
       // Set the current position in source shader
       this.uniforms.lastPoint.value = (this.uniforms.point.value) ? this.uniforms.point.value : [i/CELLS, 1.0 - j/CELLS];
       this.uniforms.point.value = [i/CELLS, 1.0 - j/CELLS];
-      
+
       // Mouse velocity
       var du = (mouseX - this.oldMouseX),
           dv = (mouseY - this.oldMouseY);
-      
+
       // Convert in shader space
       du = (du / this.ctx.width);
       dv = (dv / this.ctx.height);

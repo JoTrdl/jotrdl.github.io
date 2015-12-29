@@ -75,7 +75,7 @@
       this.bufferIndex = 0;
 
       var onMouseMove = this.mousemove.bind(this);
-      
+
       document.addEventListener('mouseup', function() {
         document.removeEventListener('mousemove', onMouseMove);
       }, false);
@@ -115,13 +115,13 @@
       var gl = this.ctx.gl;
 
       // Find the position on canvas
-      var i = e.offsetX / this.ctx.width,
-          j = 1.0 - e.offsetY / this.ctx.height;
+      var i = e.clientX / this.ctx.width,
+          j = 1.0 - e.clientY / this.ctx.height;
 
       // Determine the x and y coordinates in the particles data texture
       var x = ~~ (this.bufferIndex % CELLS_PARTICLE_DATA);
       var y = ~~ (this.bufferIndex / CELLS_PARTICLE_DATA);
-      
+
       gl.bindTexture(gl.TEXTURE_2D, this.data.output);
 
       for (var p = 0; p < PARTICLE_EMIT_RATE; p++) {
